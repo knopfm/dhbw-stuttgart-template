@@ -1,0 +1,16 @@
+stages:
+  - build
+
+build_tex:
+  image: miktex/miktex
+  tags:
+    - docker
+  stage: build
+  artifacts:
+    paths:
+      - 'main.pdf'
+  script:
+    - pdflatex main.tex
+    - biber main
+    - pdflatex main.tex
+    - pdflatex main.tex

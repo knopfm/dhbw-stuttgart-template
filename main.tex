@@ -1,0 +1,106 @@
+%!TEX root = ./main.tex
+
+%%**************************************************************
+%%
+%% Template for Bachelor Thesis
+%%  by Maximilian Knopf
+%% based on a DHBW Heidenheim template
+%%
+%% Build:
+%%   pdflatex main.tex
+%%   biber main
+%%   pdflatex main.tex
+%%   pdflatex main.tex
+%%**************************************************************
+
+\input{ads/header}
+
+\begin{document}
+
+	% Cover
+	\begin{spacing}{1}
+		\input{ads/cover}
+	\end{spacing}
+	\newpage
+
+	\pagestyle{fancy}
+	\fancypagestyle{plain}{}
+	\pagenumbering{Roman}
+
+	% Restriction notices
+	\ifDocType{T3\_3100}{%
+		% no restricition notices for semester paper 1
+	}{%
+		\ifDocType{T3\_3200}{%
+			% no restricition notices for semester paper 2
+		}{%
+			\input{ads/restrictionNotices}
+%			\newpage
+		}%
+	}%
+
+	% Declaration
+	\input{ads/declaration}
+%	\newpage
+
+	% Anmerkung zum Genus des Substantivs
+	\input{ads/genus}
+	\newpage
+
+	% Abstract
+	\input{ads/abstract}
+	\newpage
+
+	% Table of contents
+	\begin{spacing}{1.5}
+		\begingroup
+		    % set subchapter depth
+			\setcounter{tocdepth}{2}
+			\tableofcontents
+			\clearpage
+		\endgroup
+	\end{spacing}
+	\newpage
+
+	% Acronyms
+	\cleardoublepage
+	\input{ads/acronyms}
+
+	\pagenumbering{arabic}
+
+	% Content
+	\acresetall
+	\input{ads/chapters}
+
+	\clearpage
+
+	% Glossar
+%	\cleardoublepage
+%	\printglossary[style=altlist,title=\glossaryPhrase]
+%	\input{ads/glossary}
+
+	% Bibilography
+%	\clearpage
+	\printbibliography[title=Literaturverzeichnis]
+
+	% List of Figures
+	\cleardoublepage
+	\listoffigures
+
+	% List of Tables
+	\cleardoublepage
+	\listoftables
+
+	% List of Listings
+	\begingroup
+	\let\clearpage\relax
+%		\cleardoublepage
+		\lstlistoflistings
+	\endgroup
+
+	% Appendix
+%	\clearpage
+	\appendix
+	\input{ads/appendix}
+
+\end{document}
