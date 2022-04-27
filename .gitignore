@@ -10,18 +10,21 @@
 *.fot
 *.cb
 *.cb2
+.*.lb
 
 ## Intermediate documents:
 *.dvi
+*.xdv
 *-converted-to.*
+
 # these rules might exclude image files for figures etc.
 # *.ps
 # *.eps
 # *.pdf
-main.pdf
 
 ## Generated if empty string is given at "Please type another file name for output:"
 .pdf
+main.pdf
 
 ## Bibliography auxiliary files (bibtex/biblatex/biber):
 *.bbl
@@ -38,6 +41,10 @@ main.pdf
 *.synctex.gz
 *.synctex.gz(busy)
 *.pdfsync
+
+## Build tool directories for auxiliary files
+# latexrun
+latex.out/
 
 ## Auxiliary and intermediate files from other packages:
 # algorithms
@@ -58,6 +65,9 @@ acs-*.bib
 
 # changes
 *.soc
+
+# comment
+*.cut
 
 # cprotect
 *.cpt
@@ -101,6 +111,11 @@ acs-*.bib
 *.glo
 *.gls
 *.glsdefs
+*.lzo
+*.lzs
+
+# uncomment this for glossaries-extra (will ignore makeindex's style files!)
+# *.ist
 
 # gnuplottex
 *-gnuplottex-*
@@ -108,6 +123,14 @@ acs-*.bib
 # gregoriotex
 *.gaux
 *.gtex
+
+# htlatex
+*.4ct
+*.4tc
+*.idv
+*.lg
+*.trc
+*.xref
 
 # hyperref
 *.brf
@@ -120,6 +143,9 @@ acs-*.bib
 
 # listings
 *.lol
+
+# luatexja-ruby
+*.ltjruby
 
 # makeidx
 *.idx
@@ -144,7 +170,9 @@ _minted*
 *.mw
 
 # nomencl
+*.nlg
 *.nlo
+*.nls
 
 # pax
 *.pax
@@ -173,6 +201,9 @@ sympy-plots-for-*.tex/
 *.pytxcode
 pythontex-files-*/
 
+# tcolorbox
+*.listing
+
 # thmtools
 *.loe
 
@@ -184,14 +215,25 @@ pythontex-files-*/
 # todonotes
 *.tdo
 
+# vhistory
+*.hst
+*.ver
+
 # easy-todo
 *.lod
+
+# xcolor
+*.xcp
+
+# xmpincl
+*.xmpi
 
 # xindy
 *.xdy
 
-# xypic precompiled matrices
+# xypic precompiled matrices and outlines
 *.xyc
+*.xyd
 
 # endfloat
 *.ttt
@@ -208,17 +250,33 @@ TSWLatexianTemp*
 # Texpad
 .texpadtmp
 
+# LyX
+*.lyx~
+
 # Kile
 *.backup
+
+# gummi
+.*.swp
 
 # KBibTeX
 *~[0-9]*
 
+# TeXnicCenter
+*.tps
+
 # auto folder when using emacs and auctex
-/auto/*
+./auto/*
+*.el
 
 # expex forward references with \gathertags
 *-tags.tex
+
+# standalone packages
+*.sta
+
+# Makeindex log files
+*.lpz
 
 # TeXnicle
 *.texnicle

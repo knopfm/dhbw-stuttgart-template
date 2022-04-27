@@ -1,0 +1,48 @@
+%!TEX root = ./main.tex
+
+\input{content/01_Problemstellung}
+\input{content/02_Grundlagen}
+\input{content/03_Hauptteil}
+\input{content/04_Ausblick}
+
+%% Beispiele, können problemlos entfernt werden!
+\chapter{Beispiele}
+Beispiele, können problemlos entfernt werden!
+\section{Literatur}
+Beispiel Text \cite[S. 10]{testBuch1}
+Beispiel Homepage\cite{urlId} \\
+
+\section{Bilder}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.3\linewidth]{resources/images/logo-dhbw}
+	\caption{DHBW Logo}
+	\label{fig:logo-dhbw}
+\end{figure}
+
+\section{Fußnote und Abkürzung}
+Fußnote\footnote{Fußnote}, \ac{DHBW}
+
+\section{Tabelle}
+\begin{table}[H]
+	\centering
+	\caption{Tabellenbeispiel}
+	\label{tab:example}
+	\begin{tabular}{|l|c|r|}
+		\hline
+		Spalte 1 & Spalte 2 & Spalte 3 \\
+		\hline
+		Zeile  &  &  \\
+		\hline
+		& Zeile &  \\
+		\hline
+		&  & Zeile \\
+		\hline
+		\multicolumn{2}{|r|}{Verbunden}	& nicht Verbunden \\
+		\hline
+	\end{tabular}
+\end{table}
+
+\section{Skript}
+\lstinline[language=c]|printf("Inline Code");|
+\lstinputlisting[language=python,caption={Beispiel python Skript},captionpos=t,label=scr:exanple]{resources/example-script.py}

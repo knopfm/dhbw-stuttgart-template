@@ -1,0 +1,167 @@
+%!TEX root = ../main.tex
+
+%% Dokumentenklasse
+\documentclass[%
+    paper=a4,           % DIN A4
+    12pt,               % Schriftgröße 12
+    parskip=full,       % eine Zeile Absatzabstand
+    oneside             % einseitig
+    listof=totoc,		% alle Verzeichnisse in ToC einbinden
+    bibliography=totoc,
+    toc=listof,
+    toc=chapterentrydotfill % ToC Punkte
+]{scrreprt}             % KOMA Skript Report
+
+%% Standard-Pakete
+\usepackage{xstring}		            % für Stringvergleich
+\usepackage[utf8]{inputenc}         	% Quelldateicodierung
+\usepackage[T1]{fontenc}	            % Fontmap-Kodierung, diese wird von der pdflatex-Engine benötigt
+\usepackage[english, ngerman]{babel}	% Sprache
+
+%% ifDocType Befehlsdefinition
+\newcommand{\ifDocType}[3]{%
+	\IfStrEq{\documentType}{#1}{#2}{#3}%
+}
+
+%% Seiteneinstellungen
+% Ränder
+\usepackage[
+    left=2.5cm,
+    right=2.5cm,
+    bottom=4cm,
+    top=4cm
+]{geometry}
+
+\usepackage[onehalfspacing]{setspace}   % Zeilenabstand
+
+% Schriftart
+\usepackage{helvet}     % Arial like
+\renewcommand{\familydefault}{\sfdefault}
+
+% Kopf- und Fußzeile
+\usepackage[headsepline=1pt, footsepline=1pt]{scrlayer-scrpage}
+\renewcommand*\chapterpagestyle{scrheadings}
+\pagestyle{scrheadings}
+\lohead{\includegraphics[height=1.5cm]{resources/images/logo-company.png}}
+\chead{}
+\rohead{\includegraphics[height=1.6cm]{resources/images/logo-dhbw.png}}
+\newcommand{\documentTypePhrase}{%
+	\IfStrEqCase{\documentType}{%
+		{T3\_1000}{Projektarbeit T1000}%
+		{T3\_2000}{Projektarbeit T2000}%
+		{T3\_2001}{Projektarbeit T2000, Teil 1}%
+		{T3\_2002}{Projektarbeit T2000, Teil 2}%
+		{T3\_3000}{Projektarbeit T3000}%
+		{T3\_3100}{Studienarbeit}
+		{T3\_3200}{Studienarbeit}%
+		{T3\_3300}{Bachelorarbeit}%
+	}
+}
+\ifoot{\documentTypePhrase}
+\cfoot{\documentAuthor}
+\ofoot{Seite | \thepage}
+\setlength{\marginparwidth}{2cm}
+
+\usepackage{scrhack}    % KOMA Skript Fehlermeldung
+
+%% Sonstige Pakete
+\usepackage{todonotes}              % Todos in GROßBUCHSTABEN
+\usepackage{graphicx}               % Bilder
+\graphicspath{{resources/images/}}  % Standard Bilderpfad
+\usepackage{subcaption}             % Mehrere Bilder/Tabllen in einer Figure
+\usepackage{tikz}                   % für komplexe Bilderstellung
+\usepackage{tabularx}               % Tabellen
+\usepackage{pdfpages}               % PDF Dateien / Seiten
+\usepackage{float}                  % Floating Darstellung
+\usepackage{xcolor}                 % Farben
+\usepackage{acronym}                % Abkürzungen, nur die Verwendeten: \usepackage[printonlyused]{acronym}
+\usepackage{amsfonts}               % Mathematische Schriftart der American Mathematical Society
+\usepackage{amsmath}                % Mathematische Schriftzeichen der American Mathematical Society
+\usepackage{fancyvrb}               % [für Quelltext]
+\usepackage{xurl}                   % URL Umbruch
+
+%% Bibliographie
+\usepackage[
+	backend=biber,			% Recommended. Alternative: biblatex
+	bibwarn=true,
+	bibencoding=utf8,		% Wenn die .bib-Datei mit utf8 kodiert ist, sonst ascii
+	sortlocale=de_DE,
+	style=\quoteStyle,
+]{biblatex}
+\loadbibresources			% Lädt die Resourcen aus der config Datei
+\newcommand{\mkbibnodate}{o\adddot J\adddot}        % o. J.
+\AtEveryBibitem{\iffieldundef{year}{\restorefield{year}{\mkbibnodate}}{}}
+\usepackage{csquotes}               % Zitierung mit Sprache verknüpfen
+
+%% Querverweise und Links
+\definecolor{LinkColor}{HTML}{00007A} % Farbe
+\usepackage[%
+    pdftitle={\documentTitle},
+    pdfauthor={\documentAuthor},
+    pdfsubject={\documentType},
+    pdfcreator={pdflatex, LaTeX with KOMA-Script},
+    pdfpagemode=UseOutlines,
+    pdfdisplaydoctitle=true,
+    pdflang={de},
+    colorlinks = false,
+	linkcolor=LinkColor,
+	citecolor=LinkColor,
+	filecolor=LinkColor,
+	menucolor=LinkColor,
+	urlcolor=LinkColor,
+	linktocpage=true,
+	bookmarksnumbered=true
+]{hyperref}
+
+%% Quelltext
+\usepackage{listings}
+
+\definecolor{comment}{HTML}{0A943F}
+\definecolor{keyword}{HTML}{184FDB}
+\definecolor{background}{HTML}{F2F2F2}
+\definecolor{string}{HTML}{DB9418}
+\lstset{%
+    backgroundcolor=\color{background},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breakautoindent=true,
+    breaklines=true,
+    captionpos=b,
+    commentstyle=\color{comment},
+    keepspaces=true,
+    keywordstyle=\color{keyword},
+    morekeywords={var}
+    numbers=left,
+    numbersep=1em,
+    numberstyle=\tiny,
+    postbreak=\space,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    stepnumber=1,
+    stringstyle=\color{string},
+    tabsize=2,
+}
+\lstloadlanguages{PHP,python,java,C,C++,bash}
+\renewcommand\lstlistingname{Skript}
+\renewcommand\lstlistlistingname{Skriptverzeichnis}
+\def\lstlistingautorefname{Skript}
+
+%% Chapter Style
+\definecolor{chapterBlue}{RGB}{47,84,150}
+\addtokomafont{chapter}{\color{chapterBlue}}
+\addtokomafont{section}{\color{chapterBlue}}
+\addtokomafont{subsection}{\color{chapterBlue}}
+\addtokomafont{subsubsection}{\color{chapterBlue}}
+\RedeclareSectionCommand[beforeskip=0pt,afterindent=false,afterskip=1em]{chapter}
+\RedeclareSectionCommand[beforeskip=0pt,afterindent=false,afterskip=1em]{section}
+\RedeclareSectionCommand[beforeskip=0pt,afterindent=false,afterskip=1em]{subsection}
+\RedeclareSectionCommand[beforeskip=0pt,afterindent=false,afterskip=1em]{subsubsection}
+
+%% Caption Style (Bsp.: Bilderunterschrift)
+\addtokomafont{caption}{\small}
+
+%% Cover Einstellungen
+\title{\documentTitle}
+\author{\documentAuthor}
+\date{\releaseDate}

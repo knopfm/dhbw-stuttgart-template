@@ -1,0 +1,58 @@
+%!TEX root = ../main.tex
+
+\begin{titlepage}
+%% DHBW_Logo
+\begin{tikzpicture}[remember picture, overlay]
+	\node[anchor=north east,inner xsep=50pt, inner ysep=25pt] at (current page.north east)
+	{\includegraphics[height=2cm]{resources/images/logo-dhbw}};
+\end{tikzpicture}
+
+%% Firmen Logo
+\ifDocType{T2\_3100}{%
+	% kein Logo bei T3100
+}{%
+	\begin{tikzpicture}[remember picture, overlay]
+		\node[anchor=north west,inner xsep=50pt, inner ysep=25pt] at (current page.north west)
+		{\includegraphics[height=2cm]{resources/images/logo-company}};
+	\end{tikzpicture}
+}
+
+\enlargethispage{20mm}
+\begin{center}
+	\vspace*{0mm}	{\LARGE\textbf{\documentTitle}}\\
+	\vspace*{12mm}
+	\vspace*{12mm}	{\large\textbf{\documentTypePhrase}}\\
+
+	\ifDocType{T3\_3300}{
+		\vspace*{12mm}	{für die Prüfung zum}\\
+		\vspace*{3mm}	{\degree}\\
+	}
+
+	\vspace*{12mm}  {des Studienganges \department}\\
+	\vspace*{3mm}  {an der Dualen Hochschule Baden-Württemberg \locationUniversity}\\
+	\vspace*{12mm}  {von}\\
+	\vspace*{3mm}  {\textbf{\documentAuthor}}\\
+	\vspace*{12mm}  {\releaseDate}\\
+\end{center}
+
+\vfill
+
+\begin{spacing}{1.2}
+	\begin{tabbing}
+		mmmmmmmmmmmmmmmmmmmmmmmmmm \= \kill
+		\textbf{Bearbeitungszeitraum} \> \documentPeriod \\
+		\textbf{Matrikelnummer, Kurs} \> \matriculationNumber, \course \\
+		\ifDocType{T3\_3100}{%
+			% keine Firma bei T3100
+			\textbf{Betreuer der DHBW \locationUniversity} \> \evaluator
+		}{%
+			\textbf{Dualer Partner} \> \companyName, \companyLocation \\
+			\textbf{Betreuer des Dualen Partners} \> \tutor \\
+		}%
+		\ifDocType{T3\_3300}{%
+			% DHBW Gutachter 
+			\textbf{Gutachter der DHBW \locationUniversity} \> \evaluator
+		}{}
+	\end{tabbing}
+\end{spacing}
+\end{titlepage}
