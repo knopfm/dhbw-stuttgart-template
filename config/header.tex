@@ -42,7 +42,11 @@
 \usepackage[headsepline=1pt, footsepline=1pt]{scrlayer-scrpage}
 \renewcommand*\chapterpagestyle{scrheadings}
 \pagestyle{scrheadings}
-\lohead{\includegraphics[height=1.5cm]{resources/images/logo-company.png}}
+\ifDocType{T3\_3100}{%
+    % kein Logo bei T3100
+}{%
+    \lohead{\includegraphics[height=1.5cm]{resources/images/logo-company.png}}
+}
 \chead{}
 \rohead{\includegraphics[height=1.6cm]{resources/images/logo-dhbw.png}}
 \newcommand{\documentTypePhrase}{%
