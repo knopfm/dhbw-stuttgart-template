@@ -2,7 +2,7 @@ stages:
   - build
 
 build_tex:
-  image: miktex/miktex
+  image: texlive/texlive
   tags:
     - docker
   stage: build

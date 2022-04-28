@@ -17,10 +17,13 @@ Formatvorlage sind die [Leitlinien](https://www.dhbw.de/die-dhbw/dokumente#Dokum
 - `resources/acronyms.tex`: Abkürzungen alphabetisch sortiert
 - `resources/appendix.tex`: Anhang
 - `resources/images/`: Ordner mit Bildern
+- `.gitignore`: von der Versionsverwaltung ignorierte Dateien
+- `.github/workflows/build.yml`: Github Workflow für automatisiertes Erstellen
+- `.gitlab-ci.yml` GitLab CI Pipeline für automatisiertes Erstellen
 
 ## Dokument Erstellung
 
-- Zum Erzeugen wird [MikTeX](https://miktex.org/) empfohlen.
+- Eine LaTeX Distribution wird benötigt: [MikTeX](https://miktex.org/), [TeXLive](https://www.tug.org/texlive/)
 - Zum Schreiben eignen sich verschiedne Editoren: [TeXStudio](https://www.texstudio.org/), [Texmaker](https://www.xm1math.net/texmaker/)
 - Grafische Clients für die Versionsverwaltung: [git gui](https://git-scm.com/), [github desktop](https://desktop.github.com/)
 
@@ -32,7 +35,12 @@ pdflatex main.tex
 pdflatex main.tex
 ```
 
+Für plattformunabhängiges/automatisiertes Erstellen eignet sich auch [docker](https://docs.docker.com/get-started/). Siehe hierzu `.github/workflows/build.yml` und `.gitlab-ci.yml`.
+
 ## Quellen
 Die Vorlage wurde von folgender Implementierungen inspiriert:
 - DHBW Heidenheim
 - [programonaut/latex-template](https://github.com/programonaut/latex-template)
+
+## Bekannte Bugs
+- miktex muss auf neuestem Stand sein, sonst arbeitet `biber` nicht richtig
