@@ -1,4 +1,4 @@
-%!TEX root = ./main.tex
+%!TEX root = ../main.tex
 
 \input{content/01_Problemstellung}
 \input{content/02_Grundlagen}
@@ -46,3 +46,21 @@ Fußnote\footnote{Fußnote}, \ac{DHBW}
 \section{Skript}
 \lstinline[language=c]|printf("Inline Code");|
 \lstinputlisting[language=python,caption={Beispiel python Skript},captionpos=t,label=scr:exanple]{resources/example-script.py}
+
+\begin{landscape}
+	\section{Querformat}
+	Text über Tabelle \ref{tab:breitetabelle}.
+	\begin{table}[H]
+		\caption{Breites Tabellenbeispiel}
+		\label{tab:breitetabelle}
+		\centering
+		\resizebox{\columnwidth}{!}{%
+			\begin{tabular}{|p{10cm}|p{10cm}|p{10cm}|}
+				\hline
+				Sehr & breite & Tabelle \\
+				\hline
+			\end{tabular}
+		}
+	\end{table}
+	Text unter Tabelle \ref{tab:breitetabelle}.
+\end{landscape}
