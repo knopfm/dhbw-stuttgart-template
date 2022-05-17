@@ -19,7 +19,7 @@ Formatvorlage sind die [Leitlinien](https://www.dhbw.de/die-dhbw/dokumente#Dokum
 - `resources/images/`: Ordner mit Bildern
 - `.gitignore`: von der Versionsverwaltung ignorierte Dateien
 - `.github/workflows/build.yml`: Github Workflow für automatisiertes Erstellen
-- `.gitlab-ci.yml` GitLab CI Pipeline für automatisiertes Erstellen
+- `.gitlab-ci.yml`: GitLab CI Pipeline für automatisiertes Erstellen
 
 ## Dokument Erstellung
 
