@@ -47,6 +47,10 @@ Fußnote\footnote{Fußnote}, \ac{DHBW}
 \lstinline[language=c]|printf("Inline Code");|
 \lstinputlisting[language=python,caption={Beispiel python Skript},captionpos=t,label=scr:exanple]{resources/example-script.py}
 
+\section{TODOs}
+Text Text\todo{TODO als Randnotiz} Text
+\todo[inline]{TODO als in Zeile}
+
 \begin{landscape}
 	\section{Querformat}
 	Text über Tabelle \ref{tab:breitetabelle}.
@@ -58,6 +62,8 @@ Fußnote\footnote{Fußnote}, \ac{DHBW}
 			\begin{tabular}{|p{10cm}|p{10cm}|p{10cm}|}
 				\hline
 				Sehr & breite & Tabelle \\
+				\hline
+				\multicolumn{3}{|c|}{Tabelle wurde in der Größe verkleinert} \\
 				\hline
 			\end{tabular}
 		}
